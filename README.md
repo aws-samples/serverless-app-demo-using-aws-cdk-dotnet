@@ -18,7 +18,7 @@ cloud9
 
 #### NOTE
 
-If you are running this lab in an AWS run event, please jump straight to step 3. 
+If you are running this lab in an AWS run event, please jump straight to step 3.
 
 ## Step 1: Setting up the environment
 
@@ -43,6 +43,11 @@ cdk --version
 
 1.154.0 (build 0d1b77f)
 ```
+
+### Install .NET 6
+
+Install .NET 6 from the [here](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
 
 ## Step 2: Clone and setup the AWS CDK application
 
