@@ -280,6 +280,8 @@ To avoid incurring additional charges, clean up all the resources that have been
 
 ```bash
 cdk destroy
+cd ~/environment/
+rm -r serverless-app-demo-using-aws-cdk-dotnet
 ```
 
 
