@@ -10,7 +10,7 @@ Resources:
       AutomaticStopTimeMinutes: 20160
       Description: Serverless App DevLab
       ImageId: amazonlinux-2-x86_64
-      InstanceType: t2.small
+      InstanceType: t2.micro
       Name: Serverless App DevLab CDK (Level 200)
 
 Outputs:
