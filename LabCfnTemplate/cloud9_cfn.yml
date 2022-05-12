@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description:
+   ANZ Devlabs Serverless App CDK .NET Demo
+
+Resources:
+  Cloud9InstanceAL2:
+    Type: AWS::Cloud9::EnvironmentEC2
+    Properties:
+      AutomaticStopTimeMinutes: 20160
+      Description: Serverless App DevLab
+      ImageId: amazonlinux-2-x86_64
+      InstanceType: t2.micro
+      Name: Serverless App DevLab CDK (Level 200)
+
+  Outputs:
+    Cloud9URL:
+      Description: Cloud9 Environment
+      Value:
+        Fn::Join:
+        - ''
+        - - !Sub https://${AWS::Region}.console.aws.amazon.com/cloud9/ide/
+          - !Ref 'Cloud9InstanceAL2'
