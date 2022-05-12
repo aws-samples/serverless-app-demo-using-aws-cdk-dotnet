@@ -4,57 +4,32 @@
 ## Solution Overview
 
 ![00_architecture](./images/00_architecture.jpg)
-cloud9
-## Prerequisites
-
-- [AWS Account](https://signin.aws.amazon.com/signin)
-- An AWS user with AdministratorAccess (see the [instructions](https://console.aws.amazon.com/iam/home#/roles%24new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess) on the [AWS Identity and Access Management](http://aws.amazon.com/iam) (IAM) console)
-- Access to the following AWS services: [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [AWS Lambda](https://aws.amazon.com/lambda/), and [Amazon DynamoDB](https://aws.amazon.com/dynamodb/).
-- [Node.js](https://nodejs.org/en/download/) installed
-- .NET 6 SDK installed
-- JetBrains Rider or Microsoft Visual Studio 2017 or later (or Visual Studio Code)
-- [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-
-
-#### NOTE
-
-If you are running this lab in an AWS run event, please jump straight to step 3.
 
 ## Step 1: Setting up the environment
 
-### Install AWS CLI
+### Install .NET 6.0
 
-You need an AWS access key ID and secret access key for configuring the AWS Command Line Interface (AWS CLI). To learn more about configuring the AWS CLI, follow these [instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
-
-
-### Install AWS CDK
-
-Install the AWS CDK Toolkit globally using the following Node Package Manager command.
+Execute the following command to add the Microsoft package signing key to your list of trusted keys and add the Microsoft package repository before installing .NET Core 6:
 
 ```bash
-npm uninstall -g aws-cdk   
-npm i -g aws-cdk@1.154.0
+sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
 ```
 
-Run the following command to verify correct installation and print the version number of the AWS CDK.
+Execute the following command to install the.NET SDK:
 
 ```bash
-cdk --version
-
-1.154.0 (build 0d1b77f)
+sudo yum install dotnet-sdk-6.0
+dotnet new tool-manifest
+dotnet tool install Amazon.Lambda.Tools
+#dotnet tool install -g Amazon.Lambda.Tools
 ```
-
-### Install .NET 6
-
-Install .NET 6 from the [here](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-
 
 ## Step 2: Clone and setup the AWS CDK application
 
 On your local machine, clone the AWS CDK application with the following command:
 
 ```shell
-git clone https://github.com/aws-samples/serverless-app-using-aws-cdk-dotnet.git
+git clone https://github.com/aws-samples/serverless-app-demo-using-aws-cdk-dotnet.git
 ```
 
 Directory structure after cloning:
@@ -67,7 +42,7 @@ Directory structure after cloning:
 The DepartmentSvc lambda function in the ServerlessApp directory must be packaged and copied to the CdkServerlessApp\lambdas folder.
 
 ```bash
-cd DepartmentSvc/src/DepartmentSvc
+cd serverless-app-demo-using-aws-cdk-dotnet/ServerlessApp/DepartmentSvc/src/DepartmentSvc/
 dotnet lambda package
 cp bin/Release/net6.0/DepartmentSvc.zip ../../../../CdkServerlessApp/lambdas
 ```
@@ -78,7 +53,7 @@ cp bin/Release/net6.0/DepartmentSvc.zip ../../../../CdkServerlessApp/lambdas
 Build the CDK code before deploying to the console:
 
 ```bash
-cd CdkServerlessApp
+cd ../../../../CdkServerlessAppV2/
 dotnet build
 ```
 
