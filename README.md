@@ -86,13 +86,26 @@ Before we deploy the application, let's look at the code. First look at the dire
 
 ```shell
 .
-├── CdkServerlessApp.csproj
-├── CdkServerlessApp.sln
-├── CdkServerlessStack.cs
-├── Program.cs
+├── README.md
 ├── cdk.json
+├── cdk.out
+│   ├── CdkServerlessAppV2Stack.assets.json
+│   ├── CdkServerlessAppV2Stack.template.json
+│   ├── asset.0e1f2e2dc3aa52037a9195a6ccb6a2fb44bc4f3e1a52bdf2792b99d1965ebd0b.zip
+│   ├── cdk.out
+│   ├── manifest.json
+│   └── tree.json
 ├── lambdas
-    └── DepartmentSvc.zip   
+│   ├── DepartmentSvc.zip
+│   └── README.md
+└── src
+    ├── CdkServerlessAppV2
+    │   ├── CdkServerlessAppV2.csproj
+    │   ├── CdkServerlessAppV2Stack.cs
+    │   ├── GlobalSuppressions.cs
+    │   ├── Program.cs
+    ├── CdkServerlessAppV2.sln
+    └── global.json
 ```
 
 The cdk.json file tells the AWS CDK Toolkit how to execute your app.
