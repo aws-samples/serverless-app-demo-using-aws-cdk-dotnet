@@ -64,13 +64,17 @@ dotnet tool install Amazon.Lambda.Tools
 Execute the following command to verify the CDK version:
 
 ```bash
-npm uninstall -g aws-cdk
-rm /home/ec2-user/.nvm/versions/node/v16.15.0/bin/cdk
-npm install -g aws-cdk@2.23.0
 cdk --version
 2.23.0 (build 50444aa)
 ```
-It should be 2.23.0 or above.
+It should be 2.23.0 or above. If CDK version is less than 2.23.0, then follow the instructions below: 
+
+
+```bash
+npm uninstall -g aws-cdk
+rm /home/ec2-user/.nvm/versions/node/v16.15.0/bin/cdk
+npm install -g aws-cdk@2.23.0
+```
 
 ## Step 3: Clone and setup the AWS CDK application
 
