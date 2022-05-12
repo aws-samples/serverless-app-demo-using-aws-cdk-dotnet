@@ -15,14 +15,36 @@ Execute the following command to add the Microsoft package signing key to your l
 sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
 ```
 
-Execute the following command to install the.NET SDK:
+Execute the following command to install the .NET SDK:
 
 ```bash
-sudo yum install dotnet-sdk-6.0
+sudo yum install dotnet-sdk-6.0 -y
 dotnet new tool-manifest
 dotnet tool install Amazon.Lambda.Tools
 #dotnet tool install -g Amazon.Lambda.Tools
 ```
+
+### Verify .NET version
+
+Execute the following command to verify .NET version:
+```bash
+$ dotnet --version
+6.0.300
+```
+
+It should be 6.0.xxx.
+
+### Verify CDK version
+
+Execute the following command to verify the CDK version:
+
+```bash
+npm uninstall -g aws-cdk@2.23.0
+npm install -g aws-cdk@2.23.0
+$ cdk --version
+2.23.0 (build 50444aa)
+```
+It should be 2.23.0 or above.
 
 ## Step 2: Clone and setup the AWS CDK application
 
@@ -44,7 +66,7 @@ The DepartmentSvc lambda function in the ServerlessApp directory must be package
 ```bash
 cd serverless-app-demo-using-aws-cdk-dotnet/ServerlessApp/DepartmentSvc/src/DepartmentSvc/
 dotnet lambda package
-cp bin/Release/net6.0/DepartmentSvc.zip ../../../../CdkServerlessApp/lambdas
+cp bin/Release/net6.0/DepartmentSvc.zip ../../../../CdkServerlessAppV2/lambdas
 ```
 
 
@@ -53,8 +75,9 @@ cp bin/Release/net6.0/DepartmentSvc.zip ../../../../CdkServerlessApp/lambdas
 Build the CDK code before deploying to the console:
 
 ```bash
-cd ../../../../CdkServerlessAppV2/
+cd ../../../../CdkServerlessAppV2/src
 dotnet build
+cd ..
 ```
 
 #### A quick overview of the AWS CDK application

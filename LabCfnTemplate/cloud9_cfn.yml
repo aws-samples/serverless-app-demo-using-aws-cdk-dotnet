@@ -10,14 +10,14 @@ Resources:
       AutomaticStopTimeMinutes: 20160
       Description: Serverless App DevLab
       ImageId: amazonlinux-2-x86_64
-      InstanceType: t2.micro
+      InstanceType: t2.small
       Name: Serverless App DevLab CDK (Level 200)
 
-  Outputs:
-    Cloud9URL:
-      Description: Cloud9 Environment
-      Value:
-        Fn::Join:
-        - ''
-        - - !Sub https://${AWS::Region}.console.aws.amazon.com/cloud9/ide/
-          - !Ref 'Cloud9InstanceAL2'
+Outputs:
+  Cloud9URL:
+    Description: Cloud9 Environment
+    Value:
+      Fn::Join:
+      - ''
+      - - !Sub https://${AWS::Region}.console.aws.amazon.com/cloud9/ide/
+        - !Ref 'Cloud9InstanceAL2'
