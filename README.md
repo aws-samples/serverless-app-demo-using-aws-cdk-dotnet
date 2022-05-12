@@ -5,7 +5,43 @@
 
 ![00_architecture](./images/00_architecture.jpg)
 
-## Step 1: Setting up the environment
+
+## Let's get started
+
+Before we begin, we will need to login into AWS Cloud9. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write and run code with just a browser. All code required to setup the lab is prepared, participants are only required to run the scripts in Cloud9.
+
+To access Cloud9 search for Cloud9 in the AWS Console and click on Cloud9.
+
+
+![05_Cloud9_1](./images/05_Cloud9_1.jpg)
+
+
+Under Your environments, open the _Serverless App DevLab CDK (Level 200)_ Cloud9 instance by clicking on Open IDE:
+
+![05_Cloud9_2](./images/05_Cloud9_2.jpg)
+
+
+## Step 1: Refresh your environment
+
+Please refresh your environment by running the following commands:
+
+```bash
+cdk destroy
+cd ~/environment/
+rm -r serverless-app-demo-using-aws-cdk-dotnet
+```
+
+## Step 2: Setting up the environment
+
+### Verify .NET version
+
+Execute the following command to verify .NET version:
+```bash
+dotnet --version
+6.0.300
+```
+
+It should be 6.0.xxx. If .NET is not installed, then follow the instructions below: 
 
 ### Install .NET 6.0
 
@@ -23,16 +59,6 @@ dotnet new tool-manifest
 dotnet tool install Amazon.Lambda.Tools
 ```
 
-### Verify .NET version
-
-Execute the following command to verify .NET version:
-```bash
-dotnet --version
-6.0.300
-```
-
-It should be 6.0.xxx.
-
 ### Verify CDK version
 
 Execute the following command to verify the CDK version:
@@ -46,7 +72,7 @@ cdk --version
 ```
 It should be 2.23.0 or above.
 
-## Step 2: Clone and setup the AWS CDK application
+## Step 3: Clone and setup the AWS CDK application
 
 On your local machine, clone the AWS CDK application with the following command:
 
@@ -59,7 +85,7 @@ Directory structure after cloning:
 ![01_directory](./images/01_directory.jpg)
 
 
-## Step 3: Package the NET 6 lambda function
+## Step 4: Package the NET 6 lambda function
 
 The DepartmentSvc lambda function in the ServerlessApp directory must be packaged and copied to the CdkServerlessApp\lambdas folder.
 
@@ -70,7 +96,7 @@ cp bin/Release/net6.0/DepartmentSvc.zip ../../../../CdkServerlessAppV2/lambdas
 ```
 
 
-## Step 3: Run AWS CDK Application
+## Step 5: Run AWS CDK Application
 
 Build the CDK code before deploying to the console:
 
@@ -137,14 +163,14 @@ cdk deploy
 CDK deploys the environment to AWS. Enter 'y' when prompted for confirmation.
 
 
-## Step 4: Verify resources in console
+## Step 6: Verify resources in console
 
 You can monitor the progress using the CloudFormation console.
 
 ![02_CFNConsole](./images/02_CFNConsole.jpg)
 
 
-## Step 5: Review the resource creation code
+## Step 7: Review the resource creation code
 
 #### Create IAM roles
 
@@ -212,7 +238,7 @@ var DepartmentSvcLambda = new Function(this,"DepartmentSvc", new FunctionProps
 #endregion
 ```
 
-## Step 6: Test the serverless app
+## Step 8: Test the serverless app
 
 1. Open API Gateway in AWS console.
 1. Under APIs, click on DeptAPI to open the _Resources_ page.
@@ -265,7 +291,7 @@ Request body:
 ```
 
 
-## Step 8: View data in DynamoDB table
+## Step 9: View data in DynamoDB table
 
 1. Open DynamoDB console, and click on _Tables_ on the left menu.
 1. Click on **Department** in the listed tables.
@@ -274,7 +300,7 @@ Request body:
 ![04_DynamoDB](./images/04_DynamoDB.jpg)
 
 
-## Step 7: Cleaning up
+## Step 10: Cleaning up
 
 To avoid incurring additional charges, clean up all the resources that have been created. Run the following command from a terminal window. This deletes all the resources that were created as part of this example.
 
